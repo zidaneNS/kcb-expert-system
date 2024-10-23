@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/sympthom',sympthom);
+app.use('/disease',sympthom);
 
 mongoose.connection.once('open', () => {
     console.log('db connected');

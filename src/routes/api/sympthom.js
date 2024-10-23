@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {getAllSympthoms} = require('../../controllers/sympthomController');
+const {getAllDiseases, getAllSympthoms} = require('../../controllers/sympthomController');
 
 router.route('/')
-    .get(getAllSympthoms);
+    .get(getAllDiseases);
+
+router.route('/sympthoms')
+    .post(getAllSympthoms);
 
 module.exports = router;
