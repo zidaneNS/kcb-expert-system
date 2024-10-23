@@ -5,18 +5,33 @@ const app = express();
 const connectDB = require('./config/dbConn');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-const sympthom = require('./routes/api/sympthom');
-
+const corsOptions = require('./config/corsOptions');
+const credentials = require('./middlewares/credentials');
+const verifyJWT = require('./middlewares/verifyJWT');
+const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3000;
 
+// connecting to database
 connectDB()
 
-app.use(cors());
+// custom cors
+app.use(cors(corsOptions));
+// allow sending cookies with certain origins
+app.use(credentials);
+
+// third party middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/disease',sympthom);
+app.use(cookieParser());
+
+// api routes
+app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
+app.use('/logout', require('./routes/logout'));
+// this will be protected
+app.use(verifyJWT);
+app.use('/disease', require('./routes/api/sympthom'));
 
 mongoose.connection.once('open', () => {
     console.log('db connected');
