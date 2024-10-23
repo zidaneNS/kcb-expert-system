@@ -29,6 +29,7 @@ app.use(cookieParser());
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 app.use('/logout', require('./routes/logout'));
+app.use('/refresh', require('./routes/refresh'));
 // this will be protected
 app.use(verifyJWT);
 app.use('/disease', require('./routes/api/sympthom'));

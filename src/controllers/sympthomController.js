@@ -43,4 +43,25 @@ const getAllSympthoms  = async (req,  res) => {
     }
 }
 
-module.exports = {getAllDiseases, getAllSympthoms};
+const addDisease = async (req, res) => {
+    const { name, sympthoms, treatment } = req.body;
+    if (!name || !sympthoms || !treatment) return res.status(400).json({ success: false, message: 'please complete the fields' });
+    
+    try {
+    const duplicate = await Sympthoms.findOne({ name }).exec();
+    if (duplicate) return res.status(409).json({ success: false, message: 'name already exist, choose modify if u want to change the only name' });
+
+    const result = Sympthoms.create({
+        name,
+        sympThoms,
+        treatment
+    });
+
+    res.status(200).json({ success:true, message: 'success add disease', data: result });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false, message: 'server error' });
+    }
+}
+
+module.exports = {getAllDiseases, getAllSympthoms, addDisease};

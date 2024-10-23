@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {getAllDiseases, getAllSympthoms} = require('../../controllers/sympthomController');
+const {getAllDiseases, getAllSympthoms, addDisease} = require('../../controllers/sympthomController');
 
 router.route('/')
-    .get(getAllDiseases);
+    .get(getAllDiseases)
+    .post(addDisease);
 
 router.route('/sympthoms')
     .post(getAllSympthoms);

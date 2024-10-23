@@ -31,14 +31,14 @@ const handleLogin = async (req, res) => {
                 }
             },
             process.env.ACCESS_TOKEN,
-            { expiresIn: '20s' }
+            { expiresIn: '15m' }
         );
 
         // define refreshtoken
         const newRefreshToken = jwt.sign(
             { userName },
             process.env.REFRESH_TOKEN,
-            { expiresIn: '1m' }
+            { expiresIn: '1d' }
         );
 
         let newRefreshTokenArray = !cookies?.jwt ? foundUser.refreshToken : foundUser.refreshToken.filter(token => token !== cookies.jwt);
@@ -60,7 +60,7 @@ const handleLogin = async (req, res) => {
 
         await foundUser.save();
 
-        res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 60*60*1000 });
+        res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24*60*60*1000 });
 
         res.status(200).json({ success: true, message: `user ${userName} logged in`, accessToken });
     } catch (err) {
