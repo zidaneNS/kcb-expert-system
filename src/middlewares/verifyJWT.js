@@ -5,7 +5,6 @@ const verifyJWT = async (req, res, next) => {
     const authHeader = req.headers.authorization || req.headers.Authorization;
     if (!authHeader?.startsWith('Bearer ')) return res.status(401).json({ success: false, message: 'unauthorized' });
     const token = authHeader.split(' ')[1];
-    console.log(token);
 
     jwt.verify(
         token,

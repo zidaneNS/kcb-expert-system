@@ -51,9 +51,9 @@ const addDisease = async (req, res) => {
     const duplicate = await Sympthoms.findOne({ name }).exec();
     if (duplicate) return res.status(409).json({ success: false, message: 'name already exist, choose modify if u want to change the only name' });
 
-    const result = Sympthoms.create({
+    const result = await Sympthoms.create({
         name,
-        sympThoms,
+        sympthoms,
         treatment
     });
 
@@ -64,4 +64,44 @@ const addDisease = async (req, res) => {
     }
 }
 
-module.exports = {getAllDiseases, getAllSympthoms, addDisease};
+const deleteDiseaseById = async (req, res) => {
+    const id = req.params.id;
+    if (!id) return res.status(404).json({ success: false, message: 'id parameter required' });
+
+    try {
+        const foundDisease = await Sympthoms.findOne({ _id: id }).exec();
+        if (!foundDisease) return res.status(404).json({ success: false, message: 'disease not found or id invalid' });
+    
+        const result = await Sympthoms.deleteOne({ _id: id });
+        res.status(200).json({ success: true, message: `disease ${foundDisease.name} deleted`, data: result });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false, message: 'server error' });
+    }
+}
+
+const updateDiseaseById = async (req, res) => {
+    const id = req.params.id;
+    if (!id) return res.status(404).json({ success: false, message: 'id parameter required' });
+
+    const { name, sympthoms, treatment } = req.body;
+
+    try {
+        const foundDisease = await Sympthoms.findOne({ _id: id }).exec();
+        if (!foundDisease) return res.status(404).json({ success: false, message: 'disease not found or id invalid' });
+
+        foundDisease.name = name;
+        foundDisease.sympthoms = sympthoms;
+        foundDisease.treatment = treatment;
+
+        const result = await foundUser.save();
+
+        res.status(200).json({ success: true, message: `disease ${name} updated`, data: result });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false, message: 'server error' });
+    }
+}
+
+module.exports = { getAllDiseases, getAllSympthoms, addDisease, deleteDiseaseById, updateDiseaseById };
