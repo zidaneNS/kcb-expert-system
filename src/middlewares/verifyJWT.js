@@ -13,8 +13,6 @@ const verifyJWT = async (req, res, next) => {
             if (err) return res.status(403).json({ success: false, message: 'forbidden' });
             req.user = decoded.userInfo.userName;
             req.roles = decoded.userInfo.roles;
-            console.log('user', decoded.userInfo.userName);
-            console.log('roles', decoded.userInfo.roles);
             next();
         }
     );

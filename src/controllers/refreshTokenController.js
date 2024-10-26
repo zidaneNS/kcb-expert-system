@@ -39,7 +39,7 @@ const handleRefreshToken = async (req, res) => {
                 }
                 if (err || foundUser.userName !== decoded.userName) return res.status(403).json({ success: false, message: "forbidden" });
 
-                const roles = Object.values(foundUser.roles).filter(Boolean);
+                const roles = Object.values(foundUser.roles);
                 const accessToken = jwt.sign(
                     {
                         userInfo: {

@@ -20,7 +20,7 @@ const handleLogin = async (req, res) => {
         if (!match) return res.status(403).json({ success: false, message: 'password invalid' });
 
         // get the roles data from selected user
-        const roles = Object.values(foundUser.roles).filter(Boolean);
+        const roles = Object.values(foundUser.roles);
         
         // define accesstoken
         const accessToken = jwt.sign(
