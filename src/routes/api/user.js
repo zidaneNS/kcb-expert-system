@@ -7,5 +7,4 @@ const verifyRoles = require('../../middlewares/verifiyRoles');
 router.get('/', verifyRoles(ROLES_LISTS.Dev), getAllUsers);
 router.delete('/:id', verifyRoles(ROLES_LISTS.Dev), deleteUser);
 
-
 module.exports = router;
