@@ -20,7 +20,7 @@ const handleLogin = async (req, res) => {
         if (!match) return res.status(403).json({ success: false, message: 'password invalid' });
 
         // get the roles data from selected user
-        const roles = Object.values(foundUser.roles);
+        const roles = Object.values(foundUser.roles).filter(Boolean);
         
         // define accesstoken
         const accessToken = jwt.sign(
@@ -62,7 +62,7 @@ const handleLogin = async (req, res) => {
 
         res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24*60*60*1000 });
 
-        res.status(200).json({ success: true, message: `user ${userName} logged in`, accessToken });
+        res.status(200).json({ success: true, message: `user ${userName} logged in`, data: { accessToken, roles } });
     } catch (err) {
         console.error(err);
         return res.status(500).json({ success: false, message: 'server error' });
