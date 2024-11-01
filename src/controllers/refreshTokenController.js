@@ -59,8 +59,8 @@ const handleRefreshToken = async (req, res) => {
                 foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
                 await foundUser.save();
 
-                res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
-                res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None' });
+                res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+                res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', secure: true });
                 res.status(201).json({ success: true, message: 'new accesstoken gained', accessToken });
             }
         )
