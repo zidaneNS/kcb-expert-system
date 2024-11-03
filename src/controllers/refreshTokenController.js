@@ -39,7 +39,7 @@ const handleRefreshToken = async (req, res) => {
                 }
                 if (err || foundUser.userName !== decoded.userName) return res.status(403).json({ success: false, message: "forbidden" });
 
-                const roles = Object.values(foundUser.roles);
+                const roles = Object.values(foundUser.roles).filter(Boolean);
                 const accessToken = jwt.sign(
                     {
                         userInfo: {
@@ -48,7 +48,7 @@ const handleRefreshToken = async (req, res) => {
                         }
                     },
                     process.env.ACCESS_TOKEN,
-                    { expiresIn: '15m' }
+                    { expiresIn: '10s' }
                 );
                 const newRefreshToken = jwt.sign(
                     { userName: foundUser.userName },
@@ -61,7 +61,7 @@ const handleRefreshToken = async (req, res) => {
 
                 res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
                 res.cookie('jwt', newRefreshToken, { httpOnly: true, sameSite: 'None', secure: true });
-                res.status(201).json({ success: true, message: 'new accesstoken gained', accessToken });
+                res.status(201).json({ success: true, message: 'new accesstoken gained', data: { accessToken, roles } });
             }
         )
     } catch (err) {

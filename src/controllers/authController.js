@@ -31,7 +31,7 @@ const handleLogin = async (req, res) => {
                 }
             },
             process.env.ACCESS_TOKEN,
-            { expiresIn: '15m' }
+            { expiresIn: '10s' }
         );
 
         // define refreshtoken
@@ -52,7 +52,7 @@ const handleLogin = async (req, res) => {
                 newRefreshTokenArray = [];
             }
 
-            res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
+            res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
         }
 
         // save current refreshToken
