@@ -11,6 +11,8 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+// test
+
 const deleteUser = async (req, res) => {
     if (!req.params?.id) return res.status(400).json({ success: false, message: 'id param required' });
     const id = req.params.id;
