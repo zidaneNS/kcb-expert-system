@@ -8,6 +8,6 @@ const sympthomSchema = new Schema({
     },
     sympthoms: [String],
     treatment: [String]
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model('Sympthoms', sympthomSchema);

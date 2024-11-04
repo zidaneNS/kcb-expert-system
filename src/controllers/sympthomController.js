@@ -25,8 +25,9 @@ const getAllSympthoms  = async (req,  res) => {
         // if symthomInput empty / user just started the program then returning sympthoms that includes in every diseases
         if (sympthomInput.length < 1) {
             const results = await Sympthoms.find().exec();
-            const sympthomResults = results.reduce((acc, arr) => acc.filter(value => arr.sympthoms.includes(value)), results[0].sympthoms);
-            return res.json({ success: true, message: 'success retrieving all datas', data: sympthomResults });
+            // const sympthomResults = results.reduce((acc, arr) => acc.filter(value => arr.sympthoms.includes(value)), results[0].sympthoms);
+            const sympthomResults = results.map(result => result.sympthoms)
+            return res.json({ success: true, message: 'success retrieving all datas', data: [...new Set(sympthomResults.flat())] });
         }
 
         // getting all diseases with certain sympthoms

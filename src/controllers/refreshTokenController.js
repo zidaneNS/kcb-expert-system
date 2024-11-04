@@ -10,7 +10,7 @@ const handleRefreshToken = async (req, res) => {
     const refreshToken = cookies.jwt;
 
     try {
-        const foundUser = await User.findOne({ refreshToken: { $in: [refreshToken] } }).exec();
+        const foundUser = await User.findOne({ refreshToken }).exec();
         
         // hacked handler
         if(!foundUser) {
