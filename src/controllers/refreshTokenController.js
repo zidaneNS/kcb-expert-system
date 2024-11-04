@@ -10,7 +10,7 @@ const handleRefreshToken = async (req, res) => {
     const refreshToken = cookies.jwt;
 
     try {
-        const foundUser = await User.findOne({ refreshToken }).exec();
+        const foundUser = await User.findOne({ refreshToken: { $in: [refreshToken] } }).exec();
         
         // hacked handler
         if(!foundUser) {
@@ -19,13 +19,13 @@ const handleRefreshToken = async (req, res) => {
                 process.env.REFRESH_TOKEN,
                 async (err, decoded) => {
                     if (err) return res.status(403).json({ success: false, message: 'invalid token' });
-                    const hackedUser = await User.findOne({ userName: decoded.userName }).exec();
-                    hackedUser.refreshToken = [];
-                    await hackedUser.save();
+                    // const hackedUser = await User.findOne({ userName: decoded.userName }).exec();
+                    // hackedUser.refreshToken = [];
+                    // await hackedUser.save();
                 }
             )
 
-            return res.status(403).json({ success: false, message: 'forbidden' });
+            return res.status(403).json({ success: false, message: 'forbidden founduser' });
         }
 
         jwt.verify(
