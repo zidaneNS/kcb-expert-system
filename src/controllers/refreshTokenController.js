@@ -19,9 +19,9 @@ const handleRefreshToken = async (req, res) => {
                 process.env.REFRESH_TOKEN,
                 async (err, decoded) => {
                     if (err) return res.status(403).json({ success: false, message: 'invalid token' });
-                    // const hackedUser = await User.findOne({ userName: decoded.userName }).exec();
-                    // hackedUser.refreshToken = [];
-                    // await hackedUser.save();
+                    const hackedUser = await User.findOne({ userName: decoded.userName }).exec();
+                    hackedUser.refreshToken = [];
+                    await hackedUser.save();
                 }
             )
 

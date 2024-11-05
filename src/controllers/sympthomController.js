@@ -25,9 +25,9 @@ const getAllSympthoms  = async (req,  res) => {
         // if symthomInput empty / user just started the program then returning sympthoms that includes in every diseases
         if (sympthomInput.length < 1) {
             const results = await Sympthoms.find().exec();
-            // const sympthomResults = results.reduce((acc, arr) => acc.filter(value => arr.sympthoms.includes(value)), results[0].sympthoms);
-            const sympthomResults = results.map(result => result.sympthoms)
-            return res.json({ success: true, message: 'success retrieving all datas', data: [...new Set(sympthomResults.flat())] });
+            const sympthomResults = results.reduce((acc, arr) => acc.filter(value => arr.sympthoms.includes(value)), results[0].sympthoms);
+            //const sympthomResults = results.map(result => result.sympthoms)
+            return res.json({ success: true, message: 'success retrieving all datas', data: sympthomResults });
         }
 
         // getting all diseases with certain sympthoms
@@ -39,11 +39,21 @@ const getAllSympthoms  = async (req,  res) => {
         // if only 1 disease, the expert system is done and the result is the prediction of disease
         if (results.length === 1) return res.status(200).json({ success:true, message: 'only one disease', data: results[0] });
 
+        const sympthomFrequency = {};
+
+        results.forEach(result => {
+            result.sympthoms.forEach(sympthom => {
+                if (!sympthomInput.includes(sympthom)) sympthomFrequency[sympthom] = (sympthomFrequency[sympthom] || 0) + 1;
+            })
+        })
+
         // collecting all sympthoms from selected diseases
-        const sympthomResult = results.map(result => result.sympthoms);
+        let sympthomResult = Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] === Math.max(...Object.values(sympthomFrequency)));
+
+        if (sympthomResult.length === 1) sympthomResult = Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] !== Math.min(...Object.values(sympthomFrequency)));
 
         // returning all sympthoms set
-        res.status(200).json({ success: true, message: 'success retrieving all datas', data: [...new Set(sympthomResult.flat())] });
+        res.status(200).json({ success: true, message: 'success retrieving all datas', data: sympthomResult });
     } catch (err) {
         // server error
         console.error(err);
