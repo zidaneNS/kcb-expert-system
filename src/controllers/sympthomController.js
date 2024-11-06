@@ -30,7 +30,7 @@ const getAllSympthoms  = async (req,  res) => {
             return res.json({ success: true, message: 'success retrieving all datas', data: sympthomResults });
         }
 
-        // getting all diseases with certain sympthoms
+        // getting all diseases with inputed sympthoms
         const results = await Sympthoms.find({ sympthoms: { $all: sympthomInput } }).exec();
 
         // if no results
@@ -39,18 +39,21 @@ const getAllSympthoms  = async (req,  res) => {
         // if only 1 disease, the expert system is done and the result is the prediction of disease
         if (results.length === 1) return res.status(200).json({ success:true, message: 'only one disease', data: results[0] });
 
+        // defining initial key value object to capture frequency of symthoms that appear in every diseases
         const sympthomFrequency = {};
 
+        // fill key value object for sympthomFrequency
         results.forEach(result => {
             result.sympthoms.forEach(sympthom => {
                 if (!sympthomInput.includes(sympthom)) sympthomFrequency[sympthom] = (sympthomFrequency[sympthom] || 0) + 1;
             })
         })
 
-        // collecting all sympthoms from selected diseases
-        let sympthomResult = Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] === Math.max(...Object.values(sympthomFrequency)));
+        // defining array that contains set of total sympthomFrequency
+        const freqArray = [...new Set(Object.values(sympthomFrequency).sort((a,b) => b-a ))];
 
-        if (sympthomResult.length === 1) sympthomResult = Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] !== Math.min(...Object.values(sympthomFrequency)));
+        // the result is the sympthoms that appears half or greater in every diseases
+        const sympthomResult = Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] >= freqArray[Math.floor(freqArray.length/2)]);
 
         // returning all sympthoms set
         res.status(200).json({ success: true, message: 'success retrieving all datas', data: sympthomResult });
