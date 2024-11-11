@@ -31,7 +31,7 @@ const getAllSympthoms  = async (req,  res) => {
         }
 
         // getting all diseases with inputed sympthoms
-        const results = await Sympthoms.find({ sympthoms: { $all: sympthomInput } }).exec();
+        const results = sympthomInput.includes('invalid') ? await Sympthoms.find().exec() : await Sympthoms.find({ sympthoms: { $all: sympthomInput } }).exec();
 
         // if no results
         if (!results) return res.status(404).json({ success: false, message: 'not found '});
@@ -53,7 +53,7 @@ const getAllSympthoms  = async (req,  res) => {
         const freqArray = [...new Set(Object.values(sympthomFrequency).sort((a,b) => b-a ))];
 
         // the result is the sympthoms that appears half or greater in every diseases
-        const sympthomResult = Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] >= freqArray[Math.floor(freqArray.length/2)]);
+        const sympthomResult = sympthomInput.includes('invalid') ? Object.keys(sympthomFrequency) : Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] >= freqArray[Math.floor(freqArray.length/2)]);
 
         // returning all sympthoms set
         res.status(200).json({ success: true, message: 'success retrieving all datas', data: sympthomResult });
