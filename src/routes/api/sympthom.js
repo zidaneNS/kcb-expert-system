@@ -11,7 +11,7 @@ router.route('/')
 router.route('/sympthoms')
     .post(getAllSympthoms);
 
-router.route('/sympthoms/:id')
+router.route('/:id')
     .delete(verifyRoles(ROLES_LISTS.Expert, ROLES_LISTS.Dev), deleteDiseaseById)
     .put(verifyRoles(ROLES_LISTS.Expert, ROLES_LISTS.Dev), updateDiseaseById);
 
