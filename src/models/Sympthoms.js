@@ -6,6 +6,8 @@ const sympthomSchema = new Schema({
         type: String,
         required: true
     },
+    description: String,
+    cautions: [String],
     sympthoms: [String],
     treatment: [String]
 }, { versionKey: false });

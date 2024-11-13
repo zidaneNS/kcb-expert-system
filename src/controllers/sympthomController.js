@@ -66,10 +66,10 @@ const getAllSympthoms  = async (req,  res) => {
 
 const addDisease = async (req, res) => {
     const { name, cautions, description, sympthoms, treatment } = req.body;
-    if (!name || !sympthoms || !treatment) return res.status(400).json({ success: false, message: 'please complete the fields' });
+    if (!name || !cautions || !description || !sympthoms || !treatment) return res.status(400).json({ success: false, message: 'please complete the fields' });
     
     try {
-    const duplicate = await Sympthoms.findOne({ name }).exec();
+        const duplicate = await Sympthoms.findOne({ name }).exec();
     if (duplicate) return res.status(409).json({ success: false, message: 'name already exist, choose modify if u want to change the only name' });
 
     const result = await Sympthoms.create({
