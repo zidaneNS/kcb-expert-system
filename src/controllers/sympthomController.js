@@ -65,7 +65,7 @@ const getAllSympthoms  = async (req,  res) => {
 }
 
 const addDisease = async (req, res) => {
-    const { name, sympthoms, treatment } = req.body;
+    const { name, cautions, description, sympthoms, treatment } = req.body;
     if (!name || !sympthoms || !treatment) return res.status(400).json({ success: false, message: 'please complete the fields' });
     
     try {
@@ -74,6 +74,8 @@ const addDisease = async (req, res) => {
 
     const result = await Sympthoms.create({
         name,
+        description,
+        cautions,
         sympthoms,
         treatment
     });
@@ -106,13 +108,15 @@ const updateDiseaseById = async (req, res) => {
     const id = req.params.id;
     if (!id) return res.status(404).json({ success: false, message: 'id parameter required' });
 
-    const { name, sympthoms, treatment } = req.body;
+    const { name, description, cautions, sympthoms, treatment } = req.body;
 
     try {
         const foundDisease = await Sympthoms.findOne({ _id: id }).exec();
         if (!foundDisease) return res.status(404).json({ success: false, message: 'disease not found or id invalid' });
 
         foundDisease.name = name;
+        foundDisease.description = description;
+        foundDisease.cautions = cautions;
         foundDisease.sympthoms = sympthoms;
         foundDisease.treatment = treatment;
 
