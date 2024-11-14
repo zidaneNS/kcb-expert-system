@@ -22,10 +22,24 @@ const getAllSympthoms  = async (req,  res) => {
     try {
         const { sympthomInput } = req.body;
 
-        // if symthomInput empty / user just started the program then returning sympthoms that includes in every diseases
+        // // if symthomInput empty / user just started the program then returning sympthoms that includes in every diseases
         if (sympthomInput.length < 1) {
             const results = await Sympthoms.find().exec();
-            const sympthomResults = results.reduce((acc, arr) => acc.filter(value => arr.sympthoms.includes(value)), results[0].sympthoms);
+            const sympthomFrequency = {};
+
+            // fill key value object for sympthomFrequency
+            results.forEach(result => {
+                result.sympthoms.forEach(sympthom => {
+                    if (!sympthomInput.includes(sympthom)) sympthomFrequency[sympthom] = (sympthomFrequency[sympthom] || 0) + 1;
+                })
+            })
+    
+            // defining array that contains set of total sympthomFrequency
+            const freqArray = [...new Set(Object.values(sympthomFrequency).sort((a,b) => b-a ))];
+    
+            // the result is the sympthoms that appears half or greater in every diseases
+            const sympthomResults = sympthomInput.includes('invalid') ? Object.keys(sympthomFrequency) : Object.keys(sympthomFrequency).filter(key => sympthomFrequency[key] >= freqArray[Math.floor(freqArray.length/2)]);
+                
             //const sympthomResults = results.map(result => result.sympthoms)
             return res.json({ success: true, message: 'success retrieving all datas', data: sympthomResults });
         }
@@ -120,7 +134,7 @@ const updateDiseaseById = async (req, res) => {
         foundDisease.sympthoms = sympthoms;
         foundDisease.treatment = treatment;
 
-        const result = await foundUser.save();
+        const result = await foundDisease.save();
 
         res.status(200).json({ success: true, message: `disease ${name} updated`, data: result });
     } catch (err) {
