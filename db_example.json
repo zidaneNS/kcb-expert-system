@@ -1,0 +1,176 @@
+{
+  "db": [
+    {
+      "_id": { "$oid": "67189fd3cbc42c543149097f" },
+      "name": "Diare",
+      "sympthoms": [
+        "perut kembung",
+        "tidak mampu menahan BAB",
+        "mulas",
+        "mual",
+        "muntah",
+        "demam",
+        "tinja berlendir",
+        "tinja berdarah",
+        "pusing",
+        "haus",
+        "jarang BAK",
+        "urine gelap",
+        "mulut kering",
+        "kulit kering",
+        "lemas"
+      ],
+      "treatment": [
+        "Jaga asupan cairan untuk mencegah dehidrasi. Cairan yang diberikan bisa disesuaikan dengan usia, misalnya ASI, oralit, jus, dan air putih.",
+        "Konsumsilah makanan yang mengandung lunak dan banyak air, misalnya sop atau bubur.",
+        "Konsumsilah suplemen makanan, seperti probiotik yang mengandung Lactobacillus acidophilus, terutama bila diare terjadi karena efek samping antibiotik",
+        "Hindari konsumsi yoghurt bila mengalami diare karena intoleransi laktosa.",
+        "Jangan mengonsumsi makanan tinggi lemak, berserat, atau memiliki rasa pedas",
+        "Minumlah obat diare yang bisa dibeli di apotek, seperti attapulgite. Obat diare ini bisa digunakan untuk orang dewasa maupun anak-anak."
+      ],
+      "cautions": [
+        "Infeksi virus, seperti rotavirus, yang ditandai dengan diare berair dan biasanya terjadi pada anak-anak",
+        "Infeksi bakteri Campylobacter dan Escherichia coli, yang biasanya disebut dengan keracunan makanan, disebabkan oleh konsumsi makanan yang tidak dimasak sampai matang",
+        "Infeksi bakteri Clostridium difficile, yang ditandai dengan diare berair dan kram perut setelah konsumsi antibiotik",
+        "Infeksi bakteri Salmonella, yang biasanya terjadi akibat konsumsi daging kurang matang, terutama daging ayam, dan telur mentah atau setengah matang",
+        "Amebiasis dan infeksi bakteri Shigella, yang ditandai dengan tinja berbau amis, berdarah, atau berlendir",
+        "Infeksi Cryptosporidium (kriptosporidiosis), yang terjadi setelah meminum atau tidak sengaja menelan air yang terkontaminasi dan tidak dimasak",
+        "Alergi makanan, yang ditandai dengan diare beberapa menit atau maksimal 2 jam setelah mengonsumsi makanan pemicu alergi",
+        "Intoleransi laktosa, yang biasanya disertai dengan kembung, feses berbau asam, serta anus perih atau kemerahan setelah konsumsi makanan dengan kandungan susu",
+        "Sindrom malabsorbsi, yang ditandai dengan diare kronis yang berbau menyengat dan berat badan menurun",
+        "Radang usus, yang dapat disertai dengan sakit perut, sering mulas, dan diare dengan darah atau lendir",
+        "Irritable bowel syndrome, yang ditandai dengan BAB cair, serta kram perut yang hilang timbul dan membaik setelah buang air besar",
+        "Efek samping terapi medis, seperti kemoterapi, radioterapi, atau operasi",
+        "Penyakit lain, seperti hepatitis atau kanker usus besar"
+      ],
+      "description": "Diare adalah keluhan buang air besar encer atau berair yang terjadi lebih dari 3 kali dalam sehari. Diare umumnya disebabkan oleh konsumsi makanan atau minuman yang terkontaminasi virus, bakteri, atau parasit. Meski umumnya bisa sembuh dengan perawatan mandiri, diare kadang perlu ditangani dokter."
+    },
+    {
+      "_id": { "$oid": "6718a00ccbc42c5431490981" },
+      "name": "Asam lambung",
+      "sympthoms": [
+        "bau mulut",
+        "sensasi mengganjal di kerongkongan, terutama saat menelan",
+        "mudah kenyang",
+        "sering bersendawa",
+        "suara serak",
+        "perut sesak",
+        "dada sesak",
+        "sakit tenggorokan yang tidak kunjung hilang",
+        "sakit saat menelan",
+        "mual",
+        "muntah",
+        "batuk kronis tanpa dahak",
+        "batuk kering kronis"
+      ],
+      "treatment": [
+        "Menurunkan berat badan bila memiliki berat badan berlebih",
+        "Menghindari makanan dan minuman penyebab asam lambung naik, seperti kafein dan alkohol",
+        "Makan dalam porsi lebih kecil tetapi lebih sering",
+        "Tidak merokok",
+        "Membatasi atau mengurangi konsumsi obat-obatan tertentu, seperti aspirin dan obat antiinflamasi nonsteroid",
+        "Tidak mengenakan pakaian yang sempit",
+        "Tidak membungkuk, duduk bersandar, atau berbaring, setidaknya sampai 3 jam setelah makan",
+        "Tidur dalam posisi menyamping ke kiri atau menggunakan bantal tambahan untuk meninggikan posisi tubuh dari pinggang ke atas"
+      ],
+      "description": "Penyakit asam lambung adalah kondisi yang ditandai dengan rasa terbakar di dada akibat asam lambung naik ke kerongkongan. Gejala penyakit asam lambung muncul minimal dua kali dalam seminggu.",
+      "cautions": [
+        "obesitas",
+        "kehamilan",
+        "usia lanjut",
+        "Gastroparesis, yaitu melemahnya otot dinding lambung sehingga pengosongan lambung melamba",
+        "Scleroderma, yaitu suatu penyakit pada jaringan ikat",
+        "Hernia hiatus, yaitu masuknya bagian lambung ke rongga dada"
+      ]
+    },
+    {
+      "_id": { "$oid": "67329e5277f336f33b231268" },
+      "name": "Maag",
+      "description": "Sakit maag adalah rasa tidak nyaman di perut, seperti perut terasa penuh, rasa panas di perut bagian atas, serta perut kembung. Kondisi ini merupakan gejala penyakit di lambung, seperti tukak lambung atau gastritis.",
+      "sympthoms": [
+        "perut nyeri",
+        "perut kembung",
+        "mudah kenyang",
+        "sering bersendawa",
+        "sering kentut",
+        "mulut asam",
+        "rasa panas di dada",
+        "rasa panas di ulu hati",
+        "mual",
+        "muntah"
+      ],
+      "treatment": [
+        "Obat penghambat pompa proton (proton pump inhibitor), seperti omeprazole atau lansoprazole, untuk mengurangi produksi asam lambung",
+        "Potassium-competitive acid bloker, seperti vonoprazan, untuk menurunkan dan mencegah produksi asam lambung",
+        "Antasida, untuk mengatasi sakit maag yang tergolong ringan, dengan cara menetralkan asam lambung",
+        "Antibiotik, seperti kombinasi amoxicillin dan clarithromycin, untuk mengobati infeksi H. pylori"
+      ],
+      "cautions": [
+        "Kebiasaan merokok",
+        "Konsumsi minuman berkafein, beralkohol, atau bersoda, secara berlebihan",
+        "Makan terlalu cepat dan terlalu banyak",
+        "Konsumsi makanan pedas, berlemak, atau berminyak, secara berlebihan",
+        "Jadwal makan tidak teratur atau makan terlambat",
+        "Stres atau gangguan kecemasan"
+      ]
+    },
+    {
+      "_id": { "$oid": "6732a01a77f336f33b231269" },
+      "name": "Usus Buntu",
+      "description": "Penyakit usus buntu adalah peradangan yang menyebabkan pembengkakan pada usus buntu atau apendiks. Kondisi ini umumnya ditandai dengan nyeri pada perut bagian kanan bawah yang bisa memburuk bila penderita bersin, batuk, atau beraktivitas.",
+      "sympthoms": [
+        "nyeri perut",
+        "nyeri ulu hati",
+        "mual",
+        "muntah",
+        "perut terasa penuh",
+        "perut bengkak",
+        "demam",
+        "menggigil",
+        "lemas",
+        "tidak nafsu makan",
+        "sembelit",
+        "tidak bisa kentut",
+        "jarang BAK",
+        "keluhan membaik ketika BAB atau kentut"
+      ],
+      "treatment": ["Operasi", "Laparoskopi", "Laparotomi"],
+      "cautions": [
+        "Sumbatan pada pintu rongga usus buntu akibat penumpukan feses atau tinja yang mengeras",
+        "Penebalan atau pembengkakan jaringan dinding usus buntu karena infeksi pada saluran pencernaan atau bagian tubuh lain",
+        "Penyumbatan rongga usus buntu akibat pertumbuhan parasit di pencernaan, misalnya infeksi cacing kremi atau ascariasis",
+        "Kondisi medis tertentu, seperti tumor pada perut atau inflammatory bowel disease",
+        "Cedera di perut"
+      ]
+    },
+    {
+      "_id": { "$oid": "6732a1e177f336f33b23126a" },
+      "name": "Keracunan Makanan",
+      "description": "Keracunan makanan adalah kondisi yang ditandai dengan munculnya mual, muntah, atau diare setelah mengonsumsi makanan yang telah terkontaminasi. Kontaminasi tersebut dapat disebabkan oleh kuman atau racun yang masuk ke dalam makanan.",
+      "sympthoms": [
+        "nyeri perut",
+        "diare",
+        "mual",
+        "muntah",
+        "tidak nafsu makan",
+        "demam",
+        "lemas",
+        "kepala sakit"
+      ],
+      "treatment": [
+        "Penuhi kebutuhan cairan dalam tubuh dengan minum air sedikit demi sedikit.",
+        "Konsumsilah makanan secara perlahan dengan mengonsumsi makanan yang hambar (tidak berasa), rendah lemak, dan mudah dicerna, seperti nasi, roti, pisang, atau biskuit.",
+        "Hindari jenis makanan dan minuman tertentu, seperti kafein, alkohol, produk yang mengandung susu, makanan berlemak, makanan yang terlalu manis, makanan pedas, dan makanan yang digoreng.",
+        "Istirahat yang cukup.",
+        "Minum obat mencret yang bisa dibeli bebas."
+      ],
+      "cautions": [
+        "Tidak menyimpan makanan dengan benar, seperti tidak menyimpan daging dan susu dalam suhu yang tepat",
+        "Tidak memasak makanan hingga matang, sehingga bakteri yang ada di dalam makanan tidak terbunuh seluruhnya",
+        "Menyiapkan makanan tanpa mencuci tangan sebelumnya",
+        "Kontaminasi silang akibat penggunaan alat masak yang sama untuk makanan mentah dan matang.",
+        "Minum susu dan keju yang tidak dipasteurisasi"
+      ]
+    }
+  ]
+}
