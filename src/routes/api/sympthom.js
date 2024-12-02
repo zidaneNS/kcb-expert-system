@@ -5,7 +5,7 @@ const ROLES_LISTS = require('../../config/roles_lists');
 const verifyRoles = require('../../middlewares/verifiyRoles');
 
 router.route('/')
-    .get( getAllDiseases)
+    .get(verifyRoles(ROLES_LISTS.Expert, ROLES_LISTS.Dev), getAllDiseases)
     .post(verifyRoles(ROLES_LISTS.Expert, ROLES_LISTS.Dev), addDisease);
 
 router.route('/sympthoms')
