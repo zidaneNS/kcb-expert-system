@@ -42,6 +42,5 @@ mongoose.connection.once('open', () => {
     app.listen(PORT, () => {
         console.log(`server listening at http://localhost:${PORT}`);
     });
+    module.exports = app;
 });
-
-module.exports = app;
