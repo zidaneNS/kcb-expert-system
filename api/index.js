@@ -25,6 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
+app.get('/', (req, res) => {
+    res.json({ success: true })
+})
+
 // api routes
 app.use('/register', require('../src/routes/register'));
 app.use('/auth', require('../src/routes/auth'));
