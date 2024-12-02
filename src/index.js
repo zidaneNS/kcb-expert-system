@@ -9,7 +9,7 @@ const corsOptions = require('./config/corsOptions');
 const credentials = require('./middlewares/credentials');
 const verifyJWT = require('./middlewares/verifyJWT');
 const cookieParser = require('cookie-parser');
-const PORT = 3500;
+const PORT = 3000;
 
 // connecting to database
 connectDB()
