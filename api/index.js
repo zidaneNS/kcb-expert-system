@@ -2,12 +2,12 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const connectDB = require('./config/dbConn');
+const connectDB = require('../src/config/dbConn');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const corsOptions = require('./config/corsOptions');
-const credentials = require('./middlewares/credentials');
-const verifyJWT = require('./middlewares/verifyJWT');
+const corsOptions = require('../src/config/corsOptions');
+const credentials = require('../src/middlewares/credentials');
+const verifyJWT = require('../src/middlewares/verifyJWT');
 const cookieParser = require('cookie-parser');
 const PORT = 3000;
 
@@ -26,15 +26,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // api routes
-app.use('/register', require('./routes/register'));
-app.use('/auth', require('./routes/auth'));
-app.use('/logout', require('./routes/logout'));
-app.use('/refresh', require('./routes/refresh'));
+app.use('/register', require('../src/routes/auth'));
+app.use('/auth', require('../src/routes/auth'));
+app.use('/logout', require('../src/routes/logout'));
+app.use('/refresh', require('../src/routes/refresh'));
 // this will be protected
 app.use(verifyJWT);
-app.use('/disease', require('./routes/api/sympthom'));
-app.use('/expert', require('./routes/api/expert'));
-app.use('/user', require('./routes/api/user'));
+app.use('/disease', require('../src/routes/api/sympthom'));
+app.use('/expert', require('../src/routes/api/expert'));
+app.use('/user', require('../src/routes/api/user'));
 
 mongoose.connection.once('open', () => {
     console.log('db connected');
