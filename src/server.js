@@ -9,7 +9,7 @@ const corsOptions = require('./config/corsOptions');
 const credentials = require('./middlewares/credentials');
 const verifyJWT = require('./middlewares/verifyJWT');
 const cookieParser = require('cookie-parser');
-const PORT = process.env.PORT || 3000;
+const PORT = 3500;
 
 // connecting to database
 connectDB()
@@ -43,3 +43,5 @@ mongoose.connection.once('open', () => {
         console.log(`server listening at http://localhost:${PORT}`);
     });
 });
+
+module.exports = app;
