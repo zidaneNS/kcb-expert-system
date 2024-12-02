@@ -35,7 +35,7 @@ app.use('/auth', require('../src/routes/auth'));
 app.use('/logout', require('../src/routes/logout'));
 app.use('/refresh', require('../src/routes/refresh'));
 // this will be protected
-
+app.use(verifyJWT);
 app.use('/disease', require('../src/routes/api/sympthom'));
 app.use('/expert', require('../src/routes/api/expert'));
 app.use('/user', require('../src/routes/api/user'));
