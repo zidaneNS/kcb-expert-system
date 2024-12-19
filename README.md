@@ -4,7 +4,7 @@ This app build by MERN stack
 
 ## Progress
 - [x] Complete Back-end server
-- [x] Integration between back-end server with front-end app  you can check it at (https://github.com/zidaneNS/kcb-expert-system-front-end)
+- [x] Integration between back-end server with front-end app  you can check it at (https://github.com/zidaneNS/sigapsehat-frontend)
 - [ ] Complete front-end app
 
 ## Preview
