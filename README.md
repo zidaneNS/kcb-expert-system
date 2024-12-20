@@ -1,6 +1,6 @@
 # Expert System For Stomach Disease Diagnose
 This is me and my friend final project for AI Course at Mathematics Bachelor Degree Airlangga University
-This app build by MERN stack
+This app build by MERN stack. Visit this web app at https://sigapsehat.vercel.app
 
 ## Progress
 - [x] Complete Back-end server
